@@ -6,11 +6,11 @@ namespace src;
 
 class Basket
 {
-    public function createProducts(string $code, int $price)
+    public function createProducts(Product $someProduct)
     {
-        $newProduct = new Product($code, $price);
         $allProduct = [];
-        return $allProduct [] = $newProduct;
+
+        return $allProduct [] = $someProduct;
     }
 
     public function calculatePrice($products)
