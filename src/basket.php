@@ -4,15 +4,16 @@
 namespace src;
 
 
-class basket
+class Basket
 {
-    public function addProduct(products $products)
+    public function addProduct(string $code, int $price)
     {
-
+        return new Product($code, $price);
     }
 
     public function calculatePrice()
     {
+        $this->addProduct('FC', 3);
 
     }
 
