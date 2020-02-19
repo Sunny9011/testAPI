@@ -4,13 +4,13 @@ namespace src;
 
 class Product
 {
-    public $nameProduct;
+    public $product;
     public $unitPrice;
 
 
-    public function __construct($nameProduct, $unitPrice)
+    public function __construct($product, $unitPrice)
     {
-        $this->nameProduct;
+        $this->product;
         $this->unitPrice;
 
     }

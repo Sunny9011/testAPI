@@ -8,7 +8,9 @@ class Basket
 {
     public function addProduct(string $code, int $price)
     {
-        return new Product($code, $price);
+        $newProduct = new Product($code, $price);
+
+        return $allProduct [] = $newProduct;
     }
 
     public function calculatePrice()
