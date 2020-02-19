@@ -6,6 +6,8 @@ namespace src;
 
 interface products
 {
-   public function setName(string $name);
+   public function setName($name);
+
+   public function setPrice($price);
 
 }
