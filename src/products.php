@@ -4,7 +4,7 @@
 namespace src;
 
 
-interface products
+interface Products
 {
    public function setName($name);
 
