@@ -10,8 +10,8 @@ class Product
 
     public function __construct($product, $unitPrice)
     {
-        $this->product;
-        $this->unitPrice;
+        $this->product   = $product ;
+        $this->unitPrice = $unitPrice;
 
     }
 }

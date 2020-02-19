@@ -6,17 +6,21 @@ namespace src;
 
 class Basket
 {
-    public function addProduct(string $code, int $price)
+    public function createProducts(string $code, int $price)
     {
         $newProduct = new Product($code, $price);
-
+        $allProduct = [];
         return $allProduct [] = $newProduct;
     }
 
-    public function calculatePrice()
+    public function calculatePrice($products)
     {
-        $this->addProduct('FC', 3);
+        $sum = 0;
+       foreach ($products as $product) {
+           $sum += $product->price;
+       }
 
+       return $sum;
     }
 
 }
