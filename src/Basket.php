@@ -6,14 +6,19 @@ namespace src;
 
 class Basket
 {
-    public array $products;
+    private array $products;
 
     public function addProduct(Product $newProduct)
     {
         $this->products[] = $newProduct;
     }
 
-    public function calculatePrice($products)
+    public function getBasketWithProducts(): array
+    {
+        return $this->products;
+    }
+
+    public function calculatePrice($products): int
     {
         $sum = 0;
        foreach ($products as $product) {
