@@ -6,6 +6,5 @@ spl_autoload_register(function ($class)
     if (!file_exists($fileName)) {
         return false;
     }
-
     include $fileName;
 });

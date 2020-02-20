@@ -22,5 +22,4 @@ class Basket
 
        return $sum;
     }
-
 }

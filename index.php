@@ -7,5 +7,4 @@ if (isset($_REQUEST['product']) && isset($_REQUEST['price'])) {
     $basket         = new Basket();
     $basket->addProduct($newProduct);
     $getSumProducts = $basket->calculatePrice($basket);
-
 }
