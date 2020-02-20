@@ -1,13 +1,13 @@
 <?php
 
-namespace src;
+use src\Product;
+use src\Basket;
 
-if (isset($_REQUEST['product']) && isset($_REQUEST['code'])) {
-    $newProduct     = new Product($_REQUEST['product'], $_REQUEST['code']);
+if (isset($_REQUEST['product']) && isset($_REQUEST['price'])) {
+    $newProduct     = new Product($_REQUEST['product'], $_REQUEST['price']);
     $objectBasket   = new Basket();
     $basket         = $objectBasket->createProducts($newProduct);
     $getSumProducts = $objectBasket->calculatePrice($basket);
 
-    return $getSumProducts;
+    var_dump($getSumProducts);
 }
-
