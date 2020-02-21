@@ -1,7 +1,7 @@
 <?php
 
-include_once('./src/Product.php');
-include_once('./src/Basket.php');
+use src\Product;
+use src\Basket;
 
     $car        = new Product('car', 10);
     $banana     = new Product('banana', 2);
