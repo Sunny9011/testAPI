@@ -14,7 +14,7 @@ class Basket
         return $this->products;
     }
 
-    public function calculatePrice($products): int
+    public function calculatePrice($products): float
     {
         $sum = 0;
        foreach ($products as $product) {
