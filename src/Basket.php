@@ -16,6 +16,8 @@ class Basket
 
     public function calculatePrice($products): float
     {
+
+
         $sum = 0;
        foreach ($products as $product) {
            $sum += $product->unitPrice;
