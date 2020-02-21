@@ -1,12 +1,8 @@
 <?php
 
-
-namespace src;
-
-
 class Basket
 {
-    private array $products;
+    private $products;
 
     public function addProduct(Product $newProduct)
     {
@@ -22,7 +18,7 @@ class Basket
     {
         $sum = 0;
        foreach ($products as $product) {
-           $sum += $product->price;
+           $sum += $product->unitPrice;
        }
 
        return $sum;
