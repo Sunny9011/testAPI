@@ -4,7 +4,7 @@ namespace src;
 
 class Basket
 {
-    private $products;
+    private array $products;
 
     public function addProduct(Product $newProduct)
     {

@@ -4,8 +4,8 @@ namespace src;
 
 class Product
 {
-    public $product;
-    public $unitPrice;
+    public string $product;
+    public float $unitPrice;
 
     public function __construct($product, $unitPrice)
     {
