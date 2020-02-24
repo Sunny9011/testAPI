@@ -1,11 +1,10 @@
 <?php
 
-namespace src;
 
 class Product
 {
-    public string $product;
-    public float $unitPrice;
+    public  $product;
+    public  $unitPrice;
 
     public function __construct($product, $unitPrice)
     {

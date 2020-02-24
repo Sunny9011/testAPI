@@ -1,10 +1,9 @@
 <?php
 
-namespace src;
 
 class Basket
 {
-    private array $products;
+    private $products;
 
     public function addProduct(Product $newProduct)
     {
