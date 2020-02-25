@@ -1,5 +1,7 @@
 <?php
 
+include_once 'src/discounts/BaseDiscount.php';
+
 class StandardDiscount extends BaseDiscount
 {
     public function applyDiscounts()
@@ -33,7 +35,7 @@ class StandardDiscount extends BaseDiscount
 
     private function getPriceWithDiscount($discountProducts) : float
     {
-        return $discountProducts[0]->price * $this->discount * 0.01;
+        return $discountProducts[0]->price * $this->discount * 0.01 * 3;
     }
 
     private function getDiscountProduct(array $discountProducts)

@@ -1,5 +1,6 @@
 <?php
 
+include_once 'src/discounts/StandardDiscount.php';
 
 class Basket
 {
@@ -24,7 +25,6 @@ class Basket
     public function calculatePrice(): float
     {
         $sum = 0;
-
         foreach ($this->products as $product) {
             $sum += $product->price;
         }
@@ -35,7 +35,7 @@ class Basket
     public function removeProductsByType($type)
     {
         foreach ($this->products as $index => $product) {
-            if ($product->type == $type) {
+            if ($product->productType == $type) {
                 unset($this->products[$index]);
             }
         }
