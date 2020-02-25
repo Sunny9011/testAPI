@@ -2,7 +2,6 @@
 
 include_once('./src/Product.php');
 include_once('./src/Basket.php');
-include_once('./src/DiscountPrices.php');
 
 $basket     = new Basket();
 $products   = [];
