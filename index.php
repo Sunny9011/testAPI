@@ -2,28 +2,25 @@
 
 include_once('./src/Product.php');
 include_once('./src/Basket.php');
-include_once('./src/BulkPrices.php');
+include_once('./src/DiscountPrices.php');
 
-    $car        = new Product('car', 10);
-    $car2        = new Product('car', 10);
-    $car3        = new Product('car', 10);
-    $banana     = new Product('banana', 2);
-    $mouse      = new Product('mouse', 5);
-    $bread      = new Product('bread', 3);
-    $cat        = new Product('cat', 12);
-    $basket     = new Basket();
+$basket     = new Basket();
+$products   = [];
 
-    $basket->addProduct($car);
-    $basket->addProduct($car2);
-    $basket->addProduct($car3);
-    $basket->addProduct($banana);
-    $basket->addProduct($mouse);
-    $basket->addProduct($bread);
-    $basket->addProduct($cat);
+$products[] = new Product('car', 10);
+$products[] = new Product('car', 10);
+$products[] = new Product('car', 10);
+$products[] = new Product('banana', 2);
+$products[] = new Product('mouse', 5);
+$products[] = new Product('bread', 3);
+$products[] = new Product('cat', 12);
 
-    $bulkPrice = new BulkPrices();
-    $resultName = $bulkPrice->countBulkPrice($basket->getBasketWithProducts());
+foreach ($products as $product) {
+    $basket->addProduct($product);
+}
 
-//$getSumProducts = $basket->calculatePrice($bulkPrice);
+$basket->applyDiscounts();
 
-    var_dump($resultName);
+$basketSum = $basket->calculatePrice();
+
+var_dump($basketSum);

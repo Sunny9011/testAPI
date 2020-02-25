@@ -3,12 +3,24 @@
 
 class Product
 {
-    public  $product;
-    public  $unitPrice;
+    public  $productType;
+    public  $price;
+    public  $discountable = false;
+    public  $productCount = 1;
 
-    public function __construct($product, $unitPrice)
+    public function __construct($productType, $price)
     {
-        $this->product   = $product ;
-        $this->unitPrice = $unitPrice;
+        $this->productType = $productType ;
+        $this->price       = $price;
+    }
+
+    public function setDiscountability($discountable)
+    {
+        $this->discountable = $discountable;
+    }
+
+    public function setProductCount($productCount)
+    {
+        $this->productCount = $productCount;
     }
 }
