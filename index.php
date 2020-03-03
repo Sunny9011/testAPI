@@ -6,20 +6,16 @@ include_once('./src/Basket.php');
 $basket     = new Basket();
 $products   = [];
 
-$products[] = new Product('car', 10);
-$products[] = new Product('car', 10);
-$products[] = new Product('car', 10);
-$products[] = new Product('banana', 2);
-$products[] = new Product('banana', 2);
-$products[] = new Product('banana', 2);
-$products[] = new Product('mouse', 5);
-$products[] = new Product('bread', 3);
-$products[] = new Product('cat', 12);
-$products[] = new Product('banana', 20);
+$productsCar     = new Product('car', 10, $basket);
+$productsCar1    = new Product('car', 10, $basket);
+$productsCar2    = new Product('car', 10, $basket);
+$productsBanana  = new Product('banana', 2, $basket);
+$productsBanana1 = new Product('banana', 2, $basket);
+$productsBanana2 = new Product('banana', 2, $basket);
+$productsMouse   = new Product('mouse', 5, $basket);
+$productsBread   = new Product('bread', 3, $basket);
+$productsCat     = new Product('cat', 12, $basket);
 
-foreach ($products as $product) {
-    $basket->addProduct($product);
-}
 $discount   = new StandardDiscount('car', 3, 50, $basket);
 
 $basketSum = $basket->calculatePrice();
