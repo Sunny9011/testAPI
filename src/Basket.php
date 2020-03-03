@@ -16,12 +16,6 @@ class Basket
         return $this->products;
     }
 
-    public function applyDiscounts()
-    {
-        $discount = new StandardDiscount('car', 3, 50, $this);
-        $discount->applyDiscounts();
-    }
-
     public function calculatePrice(): float
     {
         $sum = 0;

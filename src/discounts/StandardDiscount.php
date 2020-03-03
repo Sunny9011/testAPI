@@ -4,6 +4,12 @@ include_once 'src/discounts/BaseDiscount.php';
 
 class StandardDiscount extends BaseDiscount
 {
+    public function __construct($productType, $productCount, $discount, Basket $basket)
+    {
+        parent::__construct($productType, $productCount, $discount, $basket);
+        $this->applyDiscounts();
+    }
+
     public function applyDiscounts()
     {
         $discountProducts = $this->getDiscountProductsFromBasket();

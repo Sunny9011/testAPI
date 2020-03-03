@@ -10,15 +10,17 @@ $products[] = new Product('car', 10);
 $products[] = new Product('car', 10);
 $products[] = new Product('car', 10);
 $products[] = new Product('banana', 2);
+$products[] = new Product('banana', 2);
+$products[] = new Product('banana', 2);
 $products[] = new Product('mouse', 5);
 $products[] = new Product('bread', 3);
 $products[] = new Product('cat', 12);
+$products[] = new Product('banana', 20);
 
 foreach ($products as $product) {
     $basket->addProduct($product);
 }
-
-$basket->applyDiscounts();
+$discount   = new StandardDiscount('car', 3, 50, $basket);
 
 $basketSum = $basket->calculatePrice();
 
