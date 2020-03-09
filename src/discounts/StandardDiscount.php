@@ -1,19 +1,21 @@
 <?php
 
 include_once 'src/discounts/BaseDiscount.php';
+include_once 'src/Basket.php';
 
 class StandardDiscount extends BaseDiscount
 {
-    public function applyDiscounts()
+    public object $basket;
+
+    public function applyDiscounts(Basket $basket)
     {
+        $this->basket = $basket;
         $discountProducts = $this->getDiscountProductsFromBasket();
 
         if (empty($discountProducts) || count($discountProducts) < $this->productCount) {
             return;
         }
         $this->basket->removeProductsByType($this->productType);
-
-
         $this->basket->addProduct($this->getDiscountProduct($discountProducts));
     }
 
@@ -26,7 +28,6 @@ class StandardDiscount extends BaseDiscount
             if ($product->productType != $this->productType) {
                 continue;
             }
-
             $discountProducts[] = $product;
         }
 

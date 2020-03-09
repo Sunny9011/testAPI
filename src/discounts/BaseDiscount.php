@@ -8,15 +8,13 @@ abstract class BaseDiscount
 
     protected $discount;
 
-    protected $basket;
 
-    public function __construct($productType, $productCount, $discount, Basket $basket)
+    public function __construct($productType, $productCount, $discount)
     {
         $this->productType  = $productType;
         $this->productCount = $productCount;
         $this->discount     = $discount;
-        $this->basket       = $basket;
     }
 
-    public abstract function applyDiscounts();
+    public abstract function applyDiscounts(Basket $basket);
 }
