@@ -15,7 +15,6 @@ $products[] = new Product('banana', 2);
 $products[] = new Product('mouse', 5);
 $products[] = new Product('bread', 3);
 $products[] = new Product('cat', 12);
-$products[] = new Product('banana', 20);
 $products[] = new Product('keyboard', 30);
 
 foreach ($products as $product) {
@@ -23,8 +22,8 @@ foreach ($products as $product) {
 }
 $discountCar    = new StandardDiscount('car', 3, 50);
 $discountBanana = new StandardDiscount('banana', 3, 50);
-$discountCar->applyDiscounts($basket);
-$discountBanana->applyDiscounts($basket);
+$basket->applyDiscounts($discountCar);
+$basket->applyDiscounts($discountBanana);
 $basketSum = $basket->calculatePrice();
 
 var_dump($basketSum);

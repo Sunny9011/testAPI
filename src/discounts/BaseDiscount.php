@@ -15,6 +15,4 @@ abstract class BaseDiscount
         $this->productCount = $productCount;
         $this->discount     = $discount;
     }
-
-    public abstract function applyDiscounts(Basket $basket);
 }
