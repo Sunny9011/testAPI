@@ -1,7 +1,7 @@
 <?php
 
 include_once 'src/discounts/StandardDiscount.php';
-include_once 'src/discounts/StandardDiscount.php';
+
 class Basket
 {
     private $products;

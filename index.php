@@ -22,8 +22,10 @@ foreach ($products as $product) {
 }
 $discountCar    = new StandardDiscount('car', 3, 50);
 $discountBanana = new StandardDiscount('banana', 3, 50);
+
 $basket->applyDiscounts($discountCar);
 $basket->applyDiscounts($discountBanana);
+
 $basketSum = $basket->calculatePrice();
 
 var_dump($basketSum);
