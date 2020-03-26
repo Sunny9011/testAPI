@@ -5,10 +5,30 @@ include_once 'src/discounts/StandardDiscount.php';
 class Basket
 {
     private $products;
+    private $discount;
 
-    public function addProduct(Product $newProduct)
+    /**
+     * @param mixed $discounts
+     */
+    public function setDiscount( array $discounts): void
     {
-        $this->products[] = $newProduct;
+        foreach ($discounts as $discount){
+            $this->discount[] = $discount;
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    public function addProduct(array $products)
+    {
+        foreach ($products as $product )
+        $this->products[] = $product;
     }
 
     public function getProducts(): array
@@ -35,23 +55,27 @@ class Basket
         }
     }
 
-    public function applyDiscounts(StandardDiscount $discount)
+    public function applyDiscounts()
     {
-        $discountProducts = $this->getDiscountProductsFromBasket($discount);
-        if (empty($discountProducts) || count($discountProducts) < $discount->getProductCount()) {
-            return;
+        $discountProducts = $this->getDiscountProductsFromBasket();
+
+        foreach ($this->getDiscount() as $item){
+            if (empty($discountProducts) || count($discountProducts) < $this->getDiscount()[$item]->getProductCount()) {
+                return;
+            }
         }
+
         $this->removeProductsByType($discount->getProductType());
         $this->addProduct($this->getDiscountProduct($discountProducts, $discount));
     }
 
-    private function getDiscountProductsFromBasket($discount)
+    private function getDiscountProductsFromBasket()
     {
         $products         = $this->getProducts();
         $discountProducts = [];
 
         foreach ($products as $product) {
-            if ($product->productType != $discount->getProductType()) {
+            if ($product->productType != $this->getDiscount()->getProductType()) {
                 continue;
             }
             $discountProducts[] = $product;
