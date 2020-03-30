@@ -24,7 +24,4 @@ $basket->addProduct($products);
 
 $basket->setDiscount($discounts);
 
-$basket->applyDiscounts();
-$basketSum = $basket->calculatePrice();
-
-var_dump($basketSum);
+$basket->calculatePrice();

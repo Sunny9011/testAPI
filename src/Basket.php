@@ -35,15 +35,15 @@ class Basket
         return $this->products;
     }
 
-    public function calculatePrice(): float
-    {
-        $sum = 0;
-        foreach ($this->products as $product) {
-            $sum += $product->price;
-        }
-
-        return $sum;
-    }
+//    public function calculatePrice(): float
+//    {
+//        $sum = 0;
+//        foreach ($this->products as $product) {
+//            $sum += $product->price;
+//        }
+//
+//        return $sum;
+//    }
 
     public function removeProductsByType($type)
     {
@@ -54,7 +54,7 @@ class Basket
         }
     }
 
-    public function applyDiscounts()
+    public function calculatePrice()
     {
         $discountProducts = $this->getDiscountProductsFromBasket();
 
