@@ -1,5 +1,7 @@
 <?php
 
+namespace testLib\src\discount;
+
 abstract class BaseDiscount
 {
     protected $productType;
@@ -11,8 +13,8 @@ abstract class BaseDiscount
 
     public function __construct($productType, $productCount, $discount)
     {
-        $this->productType  = $productType;
+        $this->productType = $productType;
         $this->productCount = $productCount;
-        $this->discount     = $discount;
+        $this->discount = $discount;
     }
 }

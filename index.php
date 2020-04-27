@@ -1,10 +1,11 @@
 <?php
 
-include_once('./src/Product.php');
-include_once('./src/Basket.php');
+use testLib\src\Basket;
+use testLib\src\discount\StandardDiscount;
+use testLib\src\Product;
 
-$basket     = new Basket();
-$products   = [];
+$basket = new Basket();
+$products = [];
 
 $products[] = new Product('car', 10);
 $products[] = new Product('car', 10);
@@ -17,11 +18,12 @@ $products[] = new Product('bread', 3);
 $products[] = new Product('cat', 12);
 $products[] = new Product('keyboard', 30);
 
-$discounts[]   = new StandardDiscount('car', 3, 50);
-$discounts[]   = new StandardDiscount('banana', 3, 50);
+$discounts[] = new StandardDiscount('car', 3, 50);
+$discounts[] = new StandardDiscount('banana', 3, 50);
 
 $basket->addProduct($products);
 
 $basket->setDiscount($discounts);
+
 
 $basket->calculatePrice();

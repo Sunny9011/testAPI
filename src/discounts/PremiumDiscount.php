@@ -1,5 +1,7 @@
 <?php
 
+namespace testLib\src\discount;
+
 
 class PremiumDiscount extends BaseDiscount
 {

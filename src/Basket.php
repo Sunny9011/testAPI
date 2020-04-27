@@ -1,18 +1,46 @@
 <?php
 
-include_once 'autoload.php';
+namespace testLib\src;
 
 class Basket
 {
+
     private $products;
     private $discount;
 
-    /**
-     * @param mixed $discounts
-     */
-    public function setDiscount( array $discounts): void
+    public function calculatePrice()
     {
-        return true;
+        $discountProducts = $this->getDiscountProductsFromBasket();
+
+        foreach ($this->getDiscount() as $item => $value) {
+            if (empty($discountProducts) || count($discountProducts) < $this->getDiscount()[$item]->getProductCount()) {
+                return;
+            }
+            $this->removeProductsByType($this->getDiscount()[$item]->getProductType());
+            $this->addProduct($this->getDiscountProduct($discountProducts, $this->getDiscount()[$item]->getDiscount()));
+        }
+    }
+
+    private function getDiscountProductsFromBasket()
+    {
+        $products = $this->getProducts();
+        $discountProducts = [];
+
+        foreach ($this->getDiscount() as $item => $value) {
+
+            foreach ($products as $product) {
+                if ($product->productType != $this->getDiscount()[$item]->getProductType()) {
+                    continue;
+                }
+                $discountProducts[] = $product;
+            }
+        }
+        return $discountProducts;
+    }
+
+    public function getProducts(): array
+    {
+        return $this->products;
     }
 
     /**
@@ -23,15 +51,14 @@ class Basket
         return $this->discount;
     }
 
-    public function addProduct(array $products)
+    /**
+     * @param mixed $discounts
+     */
+    public function setDiscount(array $discounts): void
     {
-        foreach ($products as $product )
-        $this->products[] = $product;
-    }
-
-    public function getProducts(): array
-    {
-        return $this->products;
+        foreach ($discounts as $discount) {
+            $this->discount[] = $discount;
+        }
     }
 
     public function removeProductsByType($type)
@@ -43,51 +70,26 @@ class Basket
         }
     }
 
-    public function calculatePrice()
+    public function addProduct(array $products)
     {
-        $discountProducts = $this->getDiscountProductsFromBasket();
-
-        foreach ($this->getDiscount() as $item => $value){
-            if (empty($discountProducts) || count($discountProducts) < $this->getDiscount()[$item]->getProductCount()) {
-                return;
-            }
-            $this->removeProductsByType($this->getDiscount()[$item]->getProductType());
-            $this->addProduct($this->getDiscountProduct($discountProducts, $this->getDiscount()[$item]->getDiscount()));
-        }
-        var_dump($this);die();
-    }
-
-    private function getDiscountProductsFromBasket()
-    {
-        $products         = $this->getProducts();
-        $discountProducts = [];
-
-        foreach ($this->getDiscount() as $item => $value){
-
-            foreach ($products as $product) {
-            if ($product->productType != $this->getDiscount()[$item]->getProductType()) {
-                continue;
-            }
-            $discountProducts[] = $product;
-            }
-        }
-        return $discountProducts;
-    }
-
-    private function getPriceWithDiscount($discountProducts, $discount) : float
-    {
-        foreach ($this->getDiscount() as $item => $value){
-           $priceWithDiscount =  $discountProducts[0]->price * $discount->getDiscount() * 0.01 * $discount->getProductCount();
-        }
-        return $priceWithDiscount;
+        foreach ($products as $product)
+            $this->products[] = $product;
     }
 
     private function getDiscountProduct(array $discountProducts, $discount)
     {
-        $newDiscountProduct = new Product($discount->getProductType(), $this->getPriceWithDiscount($discountProducts,$discount));
+        $newDiscountProduct = new Product($discount->getProductType(), $this->getPriceWithDiscount($discountProducts, $discount));
         $newDiscountProduct->setDiscountability(true);
         $newDiscountProduct->setProductCount(count($discountProducts));
 
         return $newDiscountProduct;
+    }
+
+    private function getPriceWithDiscount($discountProducts, $discount): float
+    {
+        foreach ($this->getDiscount() as $item => $value) {
+            $priceWithDiscount = $discountProducts[0]->price * $discount->getDiscount() * 0.01 * $discount->getProductCount();
+        }
+        return $priceWithDiscount;
     }
 }

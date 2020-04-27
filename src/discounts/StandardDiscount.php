@@ -1,6 +1,6 @@
 <?php
 
-include_once 'src/discounts/BaseDiscount.php';
+namespace testLib\src\discount;
 
 class StandardDiscount extends BaseDiscount
 {
