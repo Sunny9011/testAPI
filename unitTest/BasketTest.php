@@ -5,7 +5,7 @@ namespace testLib\src\unitTest;
 use PHPUnit\Framework\TestCase;
 use testLib\src\Basket;
 
-class TestBasket extends TestCase
+class BasketTest extends TestCase
 {
     public function testSetDiscount()
     {
