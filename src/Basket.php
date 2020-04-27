@@ -1,6 +1,7 @@
 <?php
 
-include_once 'src/discounts/StandardDiscount.php';
+include_once 'autoload.php';
+
 class Basket
 {
     private $products;
@@ -11,9 +12,7 @@ class Basket
      */
     public function setDiscount( array $discounts): void
     {
-        foreach ($discounts as $discount){
-            $this->discount[] = $discount;
-        }
+        return true;
     }
 
     /**
