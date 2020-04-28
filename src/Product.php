@@ -12,7 +12,7 @@ class Product
     public function __construct($productType, $price)
     {
         $this->productType = $productType;
-        $this->price = $price;
+        $this->price       = $price;
     }
 
     public function setDiscountability($discountable)

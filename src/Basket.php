@@ -2,6 +2,8 @@
 
 namespace testLib\src;
 
+use testLib\src\discount\StandardDiscount;
+
 class Basket
 {
 
@@ -70,7 +72,7 @@ class Basket
         }
     }
 
-    public function addProduct(array $products)
+    public function addProduct(array $products): void
     {
         foreach ($products as $product)
             $this->products[] = $product;
